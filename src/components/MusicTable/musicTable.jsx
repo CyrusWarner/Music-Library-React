@@ -24,7 +24,7 @@ function MusicTable(props) {
                                     <td>{song.artist}</td>
                                     <td>{song.release_date}</td>
                                     <td>{song.title}</td>
-                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song, props.music)}></i></td>
+                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song,)}></i></td>
                                 </tr>
                             )
                         })

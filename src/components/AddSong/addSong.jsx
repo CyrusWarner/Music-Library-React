@@ -33,26 +33,34 @@ class AddSong extends Component {
             album: '',
             release_date: '',
         })
+        this.props.renderTable()
     }
 
     render() { 
         return (
             <React.Fragment>
+                <div className="ui main">
                 <h1>Add a Song</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form className="ui form" onSubmit={this.handleSubmit}>
+                <div className="field">
                     <label>Title</label>
                     <input name='title' type="text" onChange={this.handleChange} value={this.state.title}></input>
-                    <br/>
+                    </div>
+                    <div className="field">
                     <label>Artist</label>
                     <input name='artist' type="text" onChange={this.handleChange} value={this.state.artist}></input>
-                    <br/>
+                    </div>
+                    <div className="field">
                     <label>Album</label>
                     <input name='album' type="text" onChange={this.handleChange} value={this.state.album}></input>
-                    <br/>
+                    </div>
+                    <div className="field">
                     <label>Release Date</label>
                     <input name='release_date' type="datetime-local" onChange={this.handleChange} value={this.state.release_date}></input>
-                    <button type='submit'>Add Song</button>
+                    </div>
+                    <button className="ui button blue" type='submit'>Add Song</button>
                 </form>
+                </div>
             </React.Fragment>
         );
     }

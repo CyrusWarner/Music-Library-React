@@ -3,6 +3,7 @@ import axios from 'axios';
 import DisplayHeader from './Header/header';
 import MusicTable from './MusicTable/musicTable';
 import AddSong from './AddSong/addSong';
+import SearchBar from './SearchBar/searchBar';
 
 class App extends Component {
     constructor(props){
@@ -14,7 +15,12 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://127.0.0.1:8000/music/`).then (res =>{
+        this.renderTable()
+        
+    }
+
+    renderTable = async() => {
+        await axios.get(`http://127.0.0.1:8000/music/`).then (res =>{
             let allMusic = res.data
             console.log(allMusic)
             this.setState ({
@@ -22,11 +28,13 @@ class App extends Component {
                 songs: allMusic,
             });
         });
-        
+
+
     }
 
-     removeSong = (song, allSongs) => {
-        axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
+     removeSong = async (song) => {
+        await axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
+        this.renderTable()
         }
     
     render(){
@@ -36,7 +44,11 @@ class App extends Component {
                 <React.Fragment>
                     <DisplayHeader />
                     <MusicTable music={this.state.songs} deleteSong={this.removeSong}/>
-                    <AddSong allSongs={this.state.songs} />
+                    <AddSong allSongs={this.state.songs} renderTable={this.renderTable} />
+                    <div>
+                        <SearchBar allSOngs={this.state.songs} />
+                    </div>
+                    
                 </React.Fragment>
             );
         }
