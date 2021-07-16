@@ -1,19 +1,21 @@
 import React from 'react';
 
 function MusicTable(props) {
-    console.log(props)
     return (
         <React.Fragment>
             <h1>Music Table</h1>
             <div>
-                <table>
+                <table class="ui celled padded table">
+                    <thead>
                     <tr>
                         <th>Id</th>
                         <th>Album</th>
                         <th>Artist</th>
                         <th>Release Date</th>
                         <th>Title</th>
+                        <th>Delete Song</th>
                     </tr>
+                    </thead>
                         {props.music.map((song) => {
                             return (
                                 <tr>
@@ -22,6 +24,7 @@ function MusicTable(props) {
                                     <td>{song.artist}</td>
                                     <td>{song.release_date}</td>
                                     <td>{song.title}</td>
+                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song, props.music)}></i></td>
                                 </tr>
                             )
                         })

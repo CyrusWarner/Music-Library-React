@@ -20,9 +20,18 @@ class App extends Component {
                 loading: false,
                 songs: allMusic,
             });
-            console.log(this.state.songs)
         });
         
+    }
+
+     removeSong = async (song, allSongs) => {
+        console.log(song)
+        console.log(allSongs)
+        axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
+        // COME BACK TO AND CREATE WAY TO RERENDER TABLE 
+        // return (
+        //     <MusicTable music={allSongs} />
+        // )
     }
 
 
@@ -32,11 +41,10 @@ class App extends Component {
         const loading = this.state.loading
         if (loading) return null;
         else {
-            console.log(this.state.songs)
             return (
                 <React.Fragment>
                     <DisplayHeader />
-                    <MusicTable music={this.state.songs}/>
+                    <MusicTable music={this.state.songs} deleteSong={this.removeSong}/>
                 </React.Fragment>
             );
         }
