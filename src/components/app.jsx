@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import DisplayHeader from './Header/header';
 import MusicTable from './MusicTable/musicTable';
+import AddSong from './AddSong/addSong';
 
 class App extends Component {
     constructor(props){
@@ -45,7 +46,15 @@ class App extends Component {
         // })
         // })
 
-
+    
+    addNewSong = (song) => {
+        console.log(song)
+        let tempSong = this.state.songs
+        tempSong.push(song);
+        this.setState({
+            songs: tempSong
+        })
+    }
 
     render(){
         if (this.state.loading) return null;
@@ -54,6 +63,7 @@ class App extends Component {
                 <React.Fragment>
                     <DisplayHeader />
                     <MusicTable music={this.state.songs} deleteSong={this.removeSong}/>
+                    <AddSong addNewSong={this.addNewSong} allSongs={this.state.songs} />
                 </React.Fragment>
             );
         }
