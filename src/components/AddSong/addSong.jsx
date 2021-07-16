@@ -1,10 +1,10 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 
 class AddSong extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
             title: '',
             artist: '',
             album: '',
@@ -19,18 +19,15 @@ class AddSong extends Component {
     }
 
     handleSubmit = (event) => {
-        console.log(this.props.allSongs)
         event.preventDefault();
-        const song = {
-            id: this.props.allSongs.length + 1,
-            title: this.state.title,
-            artist: this.state.artist,
-            album: this.state.album,
-            release_date: this.state.release_date,
-        }
-        this.props.addNewSong(song)
+        axios.post(axios.post(`http://127.0.0.1:8000/music/`, this.state)).then(res => {
+            console.log(res)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
         this.setState({
-            id: '',
             title: '',
             artist: '',
             album: '',
@@ -53,7 +50,7 @@ class AddSong extends Component {
                     <input name='album' type="text" onChange={this.handleChange} value={this.state.album}></input>
                     <br/>
                     <label>Release Date</label>
-                    <input name='release_date' type="text" onChange={this.handleChange} value={this.state.release_date}></input>
+                    <input name='release_date' type="datetime-local" onChange={this.handleChange} value={this.state.release_date}></input>
                     <button type='submit'>Add Song</button>
                 </form>
             </React.Fragment>
