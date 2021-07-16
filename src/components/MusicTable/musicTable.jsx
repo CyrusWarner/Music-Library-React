@@ -7,17 +7,17 @@ function MusicTable(props) {
             <h1>Music Table</h1>
             <div>
                 <table>
-                    <thead>
+                    <tr>
                         <th>Id</th>
                         <th>Album</th>
                         <th>Artist</th>
                         <th>Release Date</th>
                         <th>Title</th>
-                    </thead>
-                    <tbody>
+                    </tr>
                         {props.music.map((song) => {
                             return (
                                 <tr>
+                                    <td>{song.id}</td>
                                     <td>{song.album}</td>
                                     <td>{song.artist}</td>
                                     <td>{song.release_date}</td>
@@ -26,7 +26,6 @@ function MusicTable(props) {
                             )
                         })
                     }
-                    </tbody>
                 </table>
             </div>
         </React.Fragment>
