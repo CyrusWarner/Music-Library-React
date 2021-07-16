@@ -48,7 +48,7 @@ class App extends Component {
 
     
     addNewSong = (song) => {
-        console.log(song)
+        axios.put(`http://127.0.0.1:8000/music/${song.id}/`)
         let tempSong = this.state.songs
         tempSong.push(song);
         this.setState({
