@@ -24,22 +24,31 @@ class App extends Component {
         
     }
 
-     removeSong = async (song, allSongs) => {
+     removeSong = (song, allSongs) => {
+        // let newSongList = [];
         console.log(song)
         console.log(allSongs)
         axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
-        // COME BACK TO AND CREATE WAY TO RERENDER TABLE 
-        // return (
-        //     <MusicTable music={allSongs} />
-        // )
-    }
-
+        }
+        // COME BACK TO AND FIGURE OUT WAY TO RERENDER TABLE
+        // .then (res =>{
+        //     let deletedSong = res.data
+        //     allSongs.filter(song =>{
+        //         debugger
+        //         if (song.id !== deletedSong.id){
+        //             newSongList.push(song)
+        //         }
+        //     })
+        // console.log(newSongList)
+        // this.setState({
+        //     songs: newSongList
+        // })
+        // })
 
 
 
     render(){
-        const loading = this.state.loading
-        if (loading) return null;
+        if (this.state.loading) return null;
         else {
             return (
                 <React.Fragment>
