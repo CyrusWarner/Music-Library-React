@@ -1,10 +1,20 @@
 import React from 'react';
+import {useState} from 'react'
 
 
 function MusicTable(props) {
+    const [search, setSearch] = useState("")
+    const filteredMusic = props.music.filter(song =>
+       song.title.toLowerCase().includes(search.toLowerCase()) ||
+       song.album.toLowerCase().includes(search.toLowerCase()) ||
+       song.artist.toLowerCase().includes(search.toLowerCase())
+    )
     return (
         <React.Fragment>
             <h1>Music Table</h1>
+            <label> Search
+                    <input type="search" placeholder="Album, Artist, Title" onChange={event => setSearch(event.target.value)} />
+            </label>
             <div>
                 <table class="ui celled padded table">
                     <thead>
@@ -17,7 +27,7 @@ function MusicTable(props) {
                         <th>Delete Song</th>
                     </tr>
                     </thead>
-                        {props.music.map((song) => {
+                        {filteredMusic.map((song) => {
                             return (
                                 <tr>
                                     <td>{song.id}</td>

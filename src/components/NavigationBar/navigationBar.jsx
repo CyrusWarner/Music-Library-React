@@ -15,7 +15,7 @@ function NavigationBar(){
       navbarScroll
     >
       <Nav.Link as={Link} to="/">Home</Nav.Link>
-      <Nav.Link as={Link} to="/addSong">Add Song</Nav.Link>
+      <Nav.Link as={Link} to="/addSong" >Add Song</Nav.Link>
     </Nav>
     
   </Navbar.Collapse>

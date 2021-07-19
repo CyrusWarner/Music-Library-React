@@ -18,15 +18,12 @@ class AddSong extends Component {
     }
     handleSubmit = (event) => {
         event.preventDefault();
-        this.postSong()
         this.setState({
             title: '',
             artist: '',
             album: '',
             release_date: '',
         })
-        console.log(this.props)
-        
     }
     postSong = async () => {
         await axios.post(axios.post(`http://127.0.0.1:8000/music/`, this.state)).then(res => {
@@ -35,6 +32,8 @@ class AddSong extends Component {
         .catch(error => {
             console.log(error)
         })
+        this.props.renderTable()
+        this.props.history.push("/")
     }
     render() { 
         return (
@@ -58,7 +57,7 @@ class AddSong extends Component {
                                 <label>Release Date</label>
                                 <input name='release_date' type="datetime-local" onChange={this.handleChange} value={this.state.release_date}></input>
                             </div>
-                                <button className="ui button blue" type='submit' onClick={this.props.renderTable()}>Add Song</button>
+                                <button className="ui button blue" type='submit' onClick={this.postSong}>Add Song</button>
                         </form>
                             </div>
             </React.Fragment>
