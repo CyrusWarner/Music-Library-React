@@ -1,24 +1,18 @@
-import React, {useImperativeHandle, useState} from 'react';
+import React from 'react';
 
 function SearchBar(props){
-    const [filteredMusic, setFilteredMusic] = useState([]);
     const handleChange = (event) => {
         const musicSearch = event.target.value;
         const filterMusic = props.allSongs.filter((song) => {
-            return song.title.toLowerCase().includes(musicSearch.toLowerCase()); //if it included what the user is searchign it will search for it 
+            let filteredSong = song.title.toLowerCase().includes(musicSearch.toLowerCase()); //if it included what the user is searchign it will search for it 
+            return filteredSong
         })
-        setFilteredMusic(filterMusic);
-        props.filteredMusic(filteredMusic);
+        console.log(filterMusic)
+        props.filteredMusic(filterMusic);
     }
     return(
         <div>
-            <i class="search icon" />
-            <input type="text" name="search" placeholder="Search" onChange={handleChange}></input>
-            {filteredMusic.map((song) => {
-                return(
-                    <a className="song" ></a>
-                )
-            })}
+           <input type="text" name="search" placeholder="Search" onChange={handleChange}></input> 
         </div>
     )
 }

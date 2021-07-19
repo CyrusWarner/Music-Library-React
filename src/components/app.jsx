@@ -13,6 +13,7 @@ class App extends Component {
         this.state = {
             loading: true,
             songs: [],
+            filteredSongs: []
         }
     }
     componentDidMount() {
@@ -29,17 +30,17 @@ class App extends Component {
             });
         });
     }
-    filteredTable = (filteredMusic) => {
-        let search = filteredMusic
-        return(
-            <MusicTable music={search} />
-        )
 
+    filteredTable = (filteredMusic) => {
+        this.setState ({
+            songs: filteredMusic,
+        },() => console.log(this.state.songs));
     }
      removeSong = async (song) => {
         await axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
         this.renderTable()
-        }
+
+    }
     render(){
         if (this.state.loading) return null;
         else {
@@ -51,6 +52,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/" exact render={(props) => (<MusicTable {...props} music={this.state.songs} deleteSong={this.removeSong}/>)}/>
                         <Route path="/addSong" render={(props) => (<AddSong {...props} allSongs={this.state.songs} renderTable={this.renderTable}/>)}/>
+                        {/*<Route path="/search" render={(props) => (<SearchBar allSongs={this.state.songs} filteredMusic={this.filteredTable}/>)}/> */} 
                     </Switch>
                     </div>
                 </Router>
