@@ -29,6 +29,7 @@ class App extends Component {
             });
         });
     }
+    
     filteredTable = (filteredMusic) => {
         let search = filteredMusic
         return(
