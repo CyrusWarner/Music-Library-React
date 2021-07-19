@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import DisplayHeader from './Header/header';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NavigationBar from './NavigationBar/navigationBar';
 import MusicTable from './MusicTable/musicTable';
 import AddSong from './AddSong/addSong';
 import SearchBar from './SearchBar/searchBar';
@@ -13,12 +15,10 @@ class App extends Component {
             songs: [],
         }
     }
-
     componentDidMount() {
         this.renderTable()
         
     }
-
     renderTable = async() => {
         await axios.get(`http://127.0.0.1:8000/music/`).then (res =>{
             let allMusic = res.data
@@ -28,32 +28,34 @@ class App extends Component {
                 songs: allMusic,
             });
         });
-
+    }
+    filteredTable = (filteredMusic) => {
+        let search = filteredMusic
+        return(
+            <MusicTable music={search} />
+        )
 
     }
-
      removeSong = async (song) => {
         await axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
         this.renderTable()
         }
-    
     render(){
         if (this.state.loading) return null;
         else {
             return (
-                <React.Fragment>
-                    <DisplayHeader />
-                    <MusicTable music={this.state.songs} deleteSong={this.removeSong}/>
-                    <AddSong allSongs={this.state.songs} renderTable={this.renderTable} />
-                    <div>
-                        <SearchBar allSOngs={this.state.songs} />
+                <Router>
+                    <div className="App">
+                    <NavigationBar />
+                    <SearchBar allSongs={this.state.songs} filteredMusic={this.filteredTable}/>
+                    <Switch>
+                        <Route path="/" exact render={(props) => (<MusicTable {...props} music={this.state.songs} deleteSong={this.removeSong}/>)}/>
+                        <Route path="/addSong" render={(props) => (<AddSong {...props} allSongs={this.state.songs} renderTable={this.renderTable}/>)}/>
+                    </Switch>
                     </div>
-                    
-                </React.Fragment>
+                </Router>
             );
         }
         }
 }
-
-
 export default App
