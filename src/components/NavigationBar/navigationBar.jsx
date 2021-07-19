@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Navbar, Nav, Form, FormControl, Button} from 'react-bootstrap'
+import {Navbar, Nav} from 'react-bootstrap'
 
 function NavigationBar(){
     return (
@@ -18,15 +18,6 @@ function NavigationBar(){
       <Nav.Link as={Link} to="/addSong">Add Song</Nav.Link>
     </Nav>
     
-    <Form className="d-flex">
-      <FormControl
-        type="search"
-        placeholder="Search"
-        className="mr-2"
-        aria-label="Search"
-      />
-      <Button variant="outline-success">Search</Button>
-    </Form>
   </Navbar.Collapse>
 </Navbar>
     )
