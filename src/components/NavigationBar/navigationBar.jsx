@@ -18,6 +18,7 @@ function NavigationBar(){
       <Nav.Link as={Link} to="/addSong">Add Song</Nav.Link>
     </Nav>
     
+    
   </Navbar.Collapse>
 </Navbar>
     )
