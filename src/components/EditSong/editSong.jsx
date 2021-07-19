@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 
-class AddSong extends Component {
+class EditSong extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,42 +24,48 @@ class AddSong extends Component {
             album: '',
             release_date: '',
         })
+        console.log(this.props)
+        this.props.history.push('/')
     }
+
+    updateSong = (song) => {
+        console.log(song)
+    }
+
     postSong = async () => {
-        await axios.post(`http://127.0.0.1:8000/music/`, this.state).then(res => {
+        await axios.put(`http://127.0.0.1:8000/music/${this.props.editSong.id}`, this.state).then(res => {
+            console.log(res)
         })
         .catch(error => {
+            console.log(error)
         })
         this.props.renderTable()
-        this.props.history.push("/")
     }
+
     render() { 
         return (
             <React.Fragment>
                 <div className="ui main">
-                    <h1>Add a Song</h1>
+                    <h1>Edit Song</h1>
                         <form className="ui form" onSubmit={this.handleSubmit}>
                             <div className="field">
                                 <label>Title</label>    
-                                <input name='title' type="text" onChange={this.handleChange} value={this.state.title}></input>
+                                <input name='title'  placeholder={this.props.editSong.title} type="text" onChange={this.handleChange} value={this.state.title}></input>
                             </div>
                             <div className="field">
                                 <label>Artist</label>
-                                <input name='artist' type="text" onChange={this.handleChange} value={this.state.artist}></input>
+                                <input name='artist' placeholder={this.props.editSong.artist} type="text" onChange={this.handleChange} value={this.state.artist}></input>
                             </div>
                             <div className="field">
                                 <label>Album</label>
-                                <input name='album' type="text" onChange={this.handleChange} value={this.state.album}></input>
+                                <input name='album' placeholder={this.props.editSong.album} type="text" onChange={this.handleChange} value={this.state.album}></input>
                             </div>
-                            <div className="field">
-                                <label>Release Date</label>
-                                <input name='release_date' type="datetime-local" onChange={this.handleChange} value={this.state.release_date}></input>
-                            </div>
-                                <button className="ui button blue" type='submit' onClick={this.postSong}>Add Song</button>
+                                <button className="ui button blue" type='submit' onClick={this.postSong}>Update Song</button>
+                                
                         </form>
                             </div>
             </React.Fragment>
         );
     }
 }
-export default AddSong;
+export default EditSong;
