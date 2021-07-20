@@ -23,7 +23,6 @@ class App extends Component {
     renderTable = async() => {
         await axios.get(`http://127.0.0.1:8000/music/`).then (res =>{
             let allMusic = res.data
-            console.log(allMusic)
             this.setState ({
                 loading: false,
                 songs: allMusic,
@@ -43,7 +42,9 @@ class App extends Component {
     }
 
     updateSongLikes = async(songId, data) => {
-        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data)
+        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data).then (res=>{
+            console.log(res)
+        })
         this.renderTable()
 
     }
@@ -55,7 +56,7 @@ class App extends Component {
             album: song.album,
             release_date: song.release_date,
             genre: song.genre,
-            do_you_like_the_song: true,
+            likes: song.likes + 1
         }
         this.updateSongLikes(song.id, data)
     }
