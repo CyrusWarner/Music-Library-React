@@ -37,13 +37,10 @@ class App extends Component {
 
     }
 
-    editSong = async (song) => {
-        await axios.get(`http://127.0.0.1:8000/music/${song.id}/`).then (res =>{
-            let song = res.data
-            console.log(song)
-            this.setState ({
-                editSong: song,
-            });
+    editSong = (song)  => {
+        let songToBeEdited = song
+        this.setState ({
+            editSong: songToBeEdited,
         });
     }
 

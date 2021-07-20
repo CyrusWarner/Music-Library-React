@@ -8,12 +8,8 @@ function MusicTable(props) {
     const filteredMusic = props.music.filter(song =>
        song.title.toLowerCase().includes(search.toLowerCase()) ||
        song.album.toLowerCase().includes(search.toLowerCase()) ||
-<<<<<<< HEAD
-       song.artist.toLowerCase().includes(search.toLowerCase())
-=======
        song.artist.toLowerCase().includes(search.toLowerCase()) 
 
->>>>>>> 1e4348924f023b9c81f1f494de8739e732d4abe5
     )
     return (
         <React.Fragment>
