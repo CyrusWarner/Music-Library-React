@@ -25,8 +25,7 @@ function MusicTable(props) {
                         <th>Artist</th>
                         <th>Title</th>
                         <th>Release Date</th>
-                        <th>Delete Song</th>
-                        <th>Edit Song</th>
+                        <th>Actions</th>
                     </tr>
                     </thead>
                         {filteredMusic.map((song) => {
@@ -36,10 +35,11 @@ function MusicTable(props) {
                                     <td>{song.artist}</td>
                                     <td>{song.title}</td>
                                     <td>{song.release_date}</td>
-                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song)}></i></td>
+                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song)}></i>
                                     <Link to='/editSong'>
-                                    <td><i className="edit icon" onClick={() => props.editSong(song)}></i></td>
+                                    <i className="edit icon" onClick={() => props.editSong(song)}></i>
                                     </Link>
+                                    </td>
                                 </tr>
                             )
                         })
