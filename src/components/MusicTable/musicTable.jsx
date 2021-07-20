@@ -44,10 +44,12 @@ function MusicTable(props) {
                                     <td>{song.genre}</td>
                                     <td>{song.likes}</td>
                                     <td>{song.release_date}</td>
-                                    <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song)}></i>
-                                    <Link to='/editSong'>
-                                    <i className="edit icon" onClick={() => props.editSong(song)}></i>
-                                    </Link>
+                                    <td>
+                                        <i class="thumbs up icon" onClick={() => props.likeSong(song)}></i>
+                                        <Link to='/editSong'>
+                                            <i className="edit icon" onClick={() => props.editSong(song)}></i>
+                                        </Link>
+                                        <i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song)}></i>
                                     </td>
                                 </tr>
                             )

@@ -41,21 +41,25 @@ class App extends Component {
             editSong: songToBeEdited,
         });
     }
-    getSong = async(song) => {
-        await axios.get(`http://127.0.0.1:8000/music/${song.id}/`).then (res =>{
-        let songData = res.data
-        return songData
-        });
-    }
 
-    likeSong = async () => {
-        let song = this.getSong()
-        song.likes += 1
-        await axios.put(`http://127.0.0.1:8000/music/${song.id}/`, song)
-
-
+    updateSongLikes = async(songId, data) => {
+        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data)
+        this.renderTable()
 
     }
+
+    likeSong = async (song) => {
+        const data = {
+            title: song.title,
+            artist: song.artist,
+            album: song.album,
+            release_date: song.release_date,
+            genre: song.genre,
+            do_you_like_the_song: true,
+        }
+        this.updateSongLikes(song.id, data)
+    }
+    
     render(){
         if (this.state.loading) return null;
         else {
@@ -64,7 +68,7 @@ class App extends Component {
                     <div className="App">
                     <NavigationBar />
                     <Switch>
-                        <Route path="/"  exact render={(props) => (<MusicTable {...props} music={this.state.songs} deleteSong={this.removeSong} editSong={this.editSong}/>)} />
+                        <Route path="/"  exact render={(props) => (<MusicTable {...props} music={this.state.songs} deleteSong={this.removeSong} editSong={this.editSong} likeSong={this.likeSong}/>)} />
                         <Route path="/addSong" render={(props) => (<AddSong {...props} allSongs={this.state.songs} renderTable={this.renderTable}/>)}/>
                         <Route path="/editSong/" render={(props) => (<EditSong {...props} song={this.state.editSong} renderTable={this.renderTable}/>)}/>
                     </Switch>

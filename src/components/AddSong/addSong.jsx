@@ -59,7 +59,7 @@ class AddSong extends Component {
                             </div>
                             <div className="field">
                                 <label>Genre</label>
-                                <input name='genre' type="datetime-local" onChange={this.handleChange} value={this.state.genre}></input>
+                                <input name='genre' type="text" onChange={this.handleChange} value={this.state.genre}></input>
                             </div>
                                 <button className="ui button blue" type='submit' onClick={this.postSong}>Add Song</button>
                         </form>
