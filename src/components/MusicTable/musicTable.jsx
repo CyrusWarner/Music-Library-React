@@ -8,7 +8,8 @@ function MusicTable(props) {
     const filteredMusic = props.music.filter(song =>
        song.title.toLowerCase().includes(search.toLowerCase()) ||
        song.album.toLowerCase().includes(search.toLowerCase()) ||
-       song.artist.toLowerCase().includes(search.toLowerCase()) 
+       song.artist.toLowerCase().includes(search.toLowerCase()) ||
+       song.genre.toLowerCase().includes(search.toLowerCase())
     )
     return (
         <React.Fragment>
@@ -28,6 +29,8 @@ function MusicTable(props) {
                         <th>Album</th>
                         <th>Artist</th>
                         <th>Title</th>
+                        <th>Genre</th>
+                        <th>Likes</th>
                         <th>Release Date</th>
                         <th>Actions</th>
                     </tr>
@@ -38,6 +41,8 @@ function MusicTable(props) {
                                     <td>{song.album}</td>
                                     <td>{song.artist}</td>
                                     <td>{song.title}</td>
+                                    <td>{song.genre}</td>
+                                    <td>{song.likes}</td>
                                     <td>{song.release_date}</td>
                                     <td><i className="trash alternate outline icon" style={{color:"red"}} onClick={() => props.deleteSong(song)}></i>
                                     <Link to='/editSong'>
