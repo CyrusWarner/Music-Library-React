@@ -8,7 +8,6 @@ class EditSong extends Component {
             title: '',
             artist: '',
             album: '',
-            genre: '',
         }
     }
     handleChange = (event) => {
@@ -22,7 +21,6 @@ class EditSong extends Component {
             title: '',
             artist: '',
             album: '',
-            genre: '',
         })
         
     }
@@ -59,10 +57,6 @@ class EditSong extends Component {
                             <div className="field">
                                 <label>Album</label>
                                 <input name='album' defaultValue={this.props.song.album} type="text" onChange={this.handleChange}></input>
-                            </div>
-                            <div className="field">
-                                <label>Genre</label>
-                                <input name='genre' defaultValue={this.props.song.genre} type="text" onChange={this.handleChange}></input>
                             </div>
                                 <button className="ui button blue" type='submit' onClick={this.updateSong}>Update Song</button>
                                 
