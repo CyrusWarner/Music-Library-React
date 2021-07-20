@@ -9,19 +9,22 @@ function MusicTable(props) {
        song.title.toLowerCase().includes(search.toLowerCase()) ||
        song.album.toLowerCase().includes(search.toLowerCase()) ||
        song.artist.toLowerCase().includes(search.toLowerCase()) 
-
     )
     return (
         <React.Fragment>
-            <h1>Music Table</h1>
-            <label> Search
-                    <input type="search" placeholder="Album, Artist, Title" onChange={event => setSearch(event.target.value)} />
-            </label>
+            <h1 className="text-center">Music Table</h1>
+            <div className="text-center">
+                <div style={{marginBottom:"50px", marginTop:"25px"}}>
+                <div className="ui huge icon input">
+                    <input type="text" placeholder="Album, Artist, Title" onChange={event => setSearch(event.target.value)} />
+                    <i className="ui blue search icon"></i>
+                    </div>
+                </div>
+            </div>
             <div>
-                <table class="ui celled padded table">
+                <table className="ui celled padded table">
                     <thead>
                     <tr>
-                        
                         <th>Album</th>
                         <th>Artist</th>
                         <th>Title</th>
@@ -50,5 +53,4 @@ function MusicTable(props) {
         </React.Fragment>
     )
 }
-
 export default MusicTable;

@@ -9,7 +9,9 @@ class EditSong extends Component {
             artist: this.props.song.artist,
             album: this.props.song.album,
         }
-        console.log(this.state)
+        if(this.state.title === undefined){
+            this.props.history.push('/')
+        }
     }
     handleChange = (event) => {
         this.setState({
@@ -17,15 +19,8 @@ class EditSong extends Component {
         });
     }
     handleSubmit = (event) => {
-        event.preventDefault();
-        this.setState({
-            title: '',
-            artist: '',
-            album: '',
-        })
-        
+        event.preventDefault();  
     }
-
     updateSong = async () => {
         const data = this.state
         const songId = this.props.song.id
@@ -39,9 +34,7 @@ class EditSong extends Component {
         this.props.renderTable()
         this.props.history.push('/')
         console.log(this.props)
-        
     }
-
     render() { 
         return (
             <React.Fragment>
@@ -61,7 +54,6 @@ class EditSong extends Component {
                                 <input name='album' defaultValue={this.props.song.album} type="text" onChange={this.handleChange}></input>
                             </div>
                                 <button className="ui button blue" type='submit' onClick={this.updateSong}>Update Song</button>
-                                
                         </form>
                             </div>
             </React.Fragment>

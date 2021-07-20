@@ -16,7 +16,6 @@ class App extends Component {
             editSong: [],
         }
     }
-
     componentDidMount() {
         this.renderTable()
         
@@ -36,14 +35,12 @@ class App extends Component {
         this.renderTable()
 
     }
-
     editSong = (song)  => {
         let songToBeEdited = song
         this.setState ({
             editSong: songToBeEdited,
         });
     }
-
     render(){
         if (this.state.loading) return null;
         else {
@@ -60,6 +57,6 @@ class App extends Component {
                 </Router>
             );
         }
-        }
+    }
 }
 export default App
