@@ -14,7 +14,6 @@ class App extends Component {
             loading: true,
             songs:[],
             editSong: [],
-            search: '',
         }
     }
 
