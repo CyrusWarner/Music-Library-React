@@ -41,6 +41,21 @@ class App extends Component {
             editSong: songToBeEdited,
         });
     }
+    getSong = async(song) => {
+        await axios.get(`http://127.0.0.1:8000/music/${song.id}/`).then (res =>{
+        let songData = res.data
+        return songData
+        });
+    }
+
+    likeSong = async () => {
+        let song = this.getSong()
+        song.likes += 1
+        await axios.put(`http://127.0.0.1:8000/music/${song.id}/`, song)
+
+
+
+    }
     render(){
         if (this.state.loading) return null;
         else {
