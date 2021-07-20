@@ -8,6 +8,7 @@ class AddSong extends Component {
             title: '',
             artist: '',
             album: '',
+            genre: '',
             release_date: '',
         }
     }
@@ -22,6 +23,7 @@ class AddSong extends Component {
             title: '',
             artist: '',
             album: '',
+            genre: '',
             release_date: '',
         })
     }
@@ -50,6 +52,10 @@ class AddSong extends Component {
                             <div className="field">
                                 <label>Album</label>
                                 <input name='album' type="text" onChange={this.handleChange} value={this.state.album}></input>
+                            </div>
+                            <div className="field">
+                                <label>genre</label>
+                                <input name='genre' type="text" onChange={this.handleChange} value={this.state.genre}></input>
                             </div>
                             <div className="field">
                                 <label>Release Date</label>
