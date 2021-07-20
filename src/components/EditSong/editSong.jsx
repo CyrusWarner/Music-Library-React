@@ -5,10 +5,11 @@ class EditSong extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            artist: '',
-            album: '',
+            title: this.props.song.title,
+            artist: this.props.song.artist,
+            album: this.props.song.album,
         }
+        console.log(this.state)
     }
     handleChange = (event) => {
         this.setState({
@@ -37,6 +38,7 @@ class EditSong extends Component {
         })
         this.props.renderTable()
         this.props.history.push('/')
+        console.log(this.props)
         
     }
 
