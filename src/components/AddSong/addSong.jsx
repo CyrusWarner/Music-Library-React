@@ -9,6 +9,7 @@ class AddSong extends Component {
             artist: '',
             album: '',
             release_date: '',
+            genre: '',
         }
     }
     handleChange = (event) => {
@@ -23,6 +24,7 @@ class AddSong extends Component {
             artist: '',
             album: '',
             release_date: '',
+            genre: '',
         })
     }
     postSong = async () => {
@@ -54,6 +56,10 @@ class AddSong extends Component {
                             <div className="field">
                                 <label>Release Date</label>
                                 <input name='release_date' type="date" onChange={this.handleChange} value={this.state.release_date}></input>
+                            </div>
+                            <div className="field">
+                                <label>Genre</label>
+                                <input name='genre' type="datetime-local" onChange={this.handleChange} value={this.state.genre}></input>
                             </div>
                                 <button className="ui button blue" type='submit' onClick={this.postSong}>Add Song</button>
                         </form>
