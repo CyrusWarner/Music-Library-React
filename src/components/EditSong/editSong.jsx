@@ -4,11 +4,12 @@ import React, { Component } from 'react';
 class EditSong extends Component {
     constructor(props) {
         super(props);
+        const {title, artist, album, genre} = this.props.song
         this.state = {
-            title: this.props.song.title,
-            artist: this.props.song.artist,
-            album: this.props.song.album,
-            genre: this.props.song.genre,
+            title: title,
+            artist: artist,
+            album: album,
+            genre: genre,
         }
         if(this.state.title === undefined){
             this.props.history.push('/')
@@ -25,16 +26,9 @@ class EditSong extends Component {
     updateSong = async () => {
         const data = this.state
         const songId = this.props.song.id
-        console.log(data)
-        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data).then(res => {
-            console.log(res)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data)
         this.props.renderTable()
         this.props.history.push('/')
-        console.log(this.props)
     }
     render() { 
         return (

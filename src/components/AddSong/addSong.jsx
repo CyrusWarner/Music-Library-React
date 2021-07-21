@@ -28,10 +28,7 @@ class AddSong extends Component {
         })
     }
     postSong = async () => {
-        await axios.post(`http://127.0.0.1:8000/music/`, this.state).then(res => {
-        })
-        .catch(error => {
-        })
+        await axios.post(`http://127.0.0.1:8000/music/`, this.state)
         this.props.renderTable()
         this.props.history.push("/")
     }

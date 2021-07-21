@@ -11,7 +11,6 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loading: true,
             songs:[],
             editSong: [],
         }
@@ -21,13 +20,11 @@ class App extends Component {
         
     }
     renderTable = async() => {
-        await axios.get(`http://127.0.0.1:8000/music/`).then (res =>{
-            let allMusic = res.data
+        let response = await axios.get(`http://127.0.0.1:8000/music/`)
+            let allMusic = response.data
             this.setState ({
-                loading: false,
                 songs: allMusic,
             });
-        });
     }
         removeSong = async (song) => {
         await axios.delete(`http://127.0.0.1:8000/music/${song.id}/`)
@@ -42,9 +39,7 @@ class App extends Component {
     }
 
     updateSongLikes = async(songId, data) => {
-        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data).then (res=>{
-            console.log(res)
-        })
+        await axios.put(`http://127.0.0.1:8000/music/${songId}/`, data)
         this.renderTable()
 
     }
@@ -62,8 +57,6 @@ class App extends Component {
     }
     
     render(){
-        if (this.state.loading) return null;
-        else {
             return (
                 <Router>
                     <div className="App">
@@ -76,7 +69,6 @@ class App extends Component {
                     </div>
                 </Router>
             );
-        }
     }
 }
 export default App
