@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Music Library
+## Implementation of a Music tracking library web application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
+- [Project Status](#project-status)
+   - [Goals](#goals)
+   - [Task List](#task-list)
+   - [Future Tasks](#future-tasks)
+- [Technologies](#technologies)
+- [Design](#Design)
+- [Images](#Images)
 
-## Available Scripts
+---
+## Project Status :green_circle:
+### Goals
+- Add functionality for adding a song to the music table
+- Add functionality for liking a song
+- Add functionality for removing a song
+- Add functionality for updating a song
+- Add functionality for searching for a song on the table
 
-In the project directory, you can run:
+### Task List: 
+:heavy_check_mark: Finished the functionality for adding a new song
 
-### `npm start`
+:heavy_check_mark: Finished adding functionality for liking a song and icon for liking a song
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+:heavy_check_mark: Finished adding icon for removing a song and functionality of removing a song
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+:heavy_check_mark: Finished adding icon for updating a song and functionality of updating a song 
 
-### `npm test`
+<!--- 
+Emojis for the Task List:
+DONE =      :heavy_check_mark:
+NOT DONE =  :x:
+WIP =       :recycle:
+BUGGED =    :warning:
+ --->
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Future Tasks  
+:x: Add ability to create multiple collections of songs
 
-### `npm run build`
+:x: Add ability to click a song and embed a video from youtube api of that song
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
+## Technologies
+- Visual Studio Code
+- React
+- Bootstrap
+- Git / GitHub
+- 
+---
+## Design
+### Music Table Home
+- Implemented a bootstrap table displaying the album, artist, title, genre, likes, release date, and actions
+- Implemented a Search bar with icon allowing a user to search through songs by all fields besideds actions shown on table
+### Add A New Song
+- Implemented a bootstrap form allowing a user to create a new song consisting of the fields album, artist, title, genre, and release date
+### Update a song
+- Implemented a bootstrap prefilled form allowing a user to update a songs album, artist, title, genre, and release date
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+## Images
+![](Images/MusicTable.png)
