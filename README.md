@@ -1,6 +1,8 @@
 # Music Library
 ## Implementation of a Music tracking library web application
 
+![](Images/MusicTable.png)
+
 ## Table of Contents
 - [Project Status](#project-status)
    - [Goals](#goals)
@@ -8,7 +10,6 @@
    - [Future Tasks](#future-tasks)
 - [Technologies](#technologies)
 - [Design](#Design)
-- [Images](#Images)
 
 ---
 ## Project Status :green_circle:
@@ -58,6 +59,3 @@ BUGGED =    :warning:
 ### Update a song
 - Implemented a bootstrap prefilled form allowing a user to update a songs album, artist, title, genre, and release date
 
----
-## Images
-![](Images/MusicTable.png)
