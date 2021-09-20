@@ -47,7 +47,7 @@ BUGGED =    :warning:
 - React
 - Bootstrap
 - Git / GitHub
-- 
+
 ---
 ## Design
 ### Music Table Home
