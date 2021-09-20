@@ -63,7 +63,7 @@ class App extends Component {
                     <NavigationBar />
                     <Switch>
                         <Route path="/"  exact render={(props) => (<MusicTable {...props} music={this.state.songs} deleteSong={this.removeSong} editSong={this.editSong} likeSong={this.likeSong}/>)} />
-                        <Route path="/addSong" render={(props) => (<AddSong {...props} allSongs={this.state.songs} renderTable={this.renderTable}/>)}/>
+                        <Route path="/addSong/" render={(props) => (<AddSong {...props} allSongs={this.state.songs} renderTable={this.renderTable}/>)}/>
                         <Route path="/editSong/" render={(props) => (<EditSong {...props} song={this.state.editSong} renderTable={this.renderTable}/>)}/>
                     </Switch>
                     </div>
